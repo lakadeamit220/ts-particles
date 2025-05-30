@@ -1,23 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-// import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
-// import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
-import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
-// import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
+import { loadFull } from "tsparticles";
 
 const TsParticlesDemo = () => {
   const [init, setInit] = useState(false);
 
-  // this should be run only once per application lifetime
   useEffect(() => {
     initParticlesEngine(async (engine) => {
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
-      //await loadAll(engine);
-      //await loadFull(engine);
-      await loadSlim(engine);
-      //await loadBasic(engine);
+      await loadFull(engine);
     }).then(() => {
       setInit(true);
     });
@@ -28,7 +18,7 @@ const TsParticlesDemo = () => {
   };
 
   return (
-    <>
+    <div style={{ position: "relative", width: "100%", height: "100vh" }}>
       {init && (
         <Particles
           id="tsparticles"
@@ -67,7 +57,7 @@ const TsParticlesDemo = () => {
                 value: "#FF0000",
               },
               links: {
-                color: "#000000",
+                color: "#0000",
                 distance: 150,
                 enable: true,
                 opacity: 0.5,
@@ -102,9 +92,39 @@ const TsParticlesDemo = () => {
             },
             detectRetina: true,
           }}
+          style={{ position: "absolute", top: 0, left: 0 }}
         />
       )}
-    </>
+      
+      {/* Your content goes here */}
+      <div style={{
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        textAlign: "center",
+        color: "#333",
+        zIndex: 1,
+        width: "80%",
+        maxWidth: "800px"
+      }}>
+        <h1 style={{ fontSize: "3rem", marginBottom: "1rem" }}>Welcome to My Website</h1>
+        <p style={{ fontSize: "1.5rem", marginBottom: "2rem" }}>
+          This content appears on top of the particles background
+        </p>
+        <button style={{
+          padding: "12px 24px",
+          fontSize: "1rem",
+          backgroundColor: "#FF0000",
+          color: "white",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer"
+        }}>
+          Click Me
+        </button>
+      </div>
+    </div>
   );
 };
 
