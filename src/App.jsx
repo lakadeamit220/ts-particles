@@ -1,10 +1,11 @@
-function App() {
+import TsParticlesDemo from "./components/TSParticlesDemo";
 
+function App() {
   return (
     <>
-      <h1 className="text-red-500 text-center">TS Particles</h1>     
+      <TsParticlesDemo />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
