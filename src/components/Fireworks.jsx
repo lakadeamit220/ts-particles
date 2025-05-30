@@ -80,23 +80,6 @@ const FireworksComponent = () => {
             </h2>
 
             <div className="text-left space-y-4 text-sm md:text-base">
-              <div className="border-l-4 border-blue-400 pl-4">
-                <h3 className="font-semibold text-blue-300 mb-2">
-                  Initialization Process
-                </h3>
-                <p>
-                  The component uses{" "}
-                  <code className="bg-gray-800 px-2 py-1 rounded">
-                    useEffect
-                  </code>{" "}
-                  to initialize the particles engine once when mounted. The{" "}
-                  <code className="bg-gray-800 px-2 py-1 rounded">
-                    initParticlesEngine
-                  </code>{" "}
-                  function loads the fireworks preset asynchronously.
-                </p>
-              </div>
-
               <div className="border-l-4 border-green-400 pl-4">
                 <h3 className="font-semibold text-green-300 mb-2">
                   Particle Configuration
