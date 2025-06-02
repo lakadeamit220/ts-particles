@@ -1,101 +1,77 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
+import { loadStarsPreset } from "@tsparticles/preset-stars";
 
-const ISRODemo = () => {
-    const [init, setInit] = useState(false);
+const ISRODemo = ({
+  backgroundColor = "#001a33",
+  particleColor = "#ffffff",
+  particleShape = "circle",
+  particleCount = 200,
+  mobileParticleCount = 100,
+  className = "",
+}) => {
+  const [init, setInit] = useState(false);
 
-    useEffect(() => {
-        initParticlesEngine(async (engine) => {
-            await loadSlim(engine);
-        }).then(() => {
-            setInit(true);
-        });
-    }, []);
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadStarsPreset(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
 
-    const particlesLoaded = (container) => {
-        console.log(container);
-    };
+  const particlesOptions = {
+    preset: "stars",
+    particles: {
+      number: {
+        value: particleCount,
+      },
+      color: {
+        value: particleColor,
+      },
+      shape: {
+        type: particleShape,
+      },
+    },
+    background: {
+      color: {
+        value: backgroundColor,
+      },
+    },
+    responsive: [
+      {
+        maxWidth: 768,
+        options: {
+          particles: {
+            number: {
+              value: mobileParticleCount,
+            },
+          },
+        },
+      },
+    ],
+  };
 
+  if (!init) {
     return (
-        <>
-            {init && (
-                <Particles
-                    id="tsparticles"
-                    particlesLoaded={particlesLoaded}
-                    options={{
-                        background: {
-                            color: {
-                                value: "#0d47a1",
-                            },
-                        },
-                        fpsLimit: 120,
-                        interactivity: {
-                            events: {
-                                onClick: {
-                                    enable: true,
-                                    mode: "push",
-                                },
-                                onHover: {
-                                    enable: true,
-                                    mode: "repulse",
-                                },
-                                resize: true,
-                            },
-                            modes: {
-                                push: {
-                                    quantity: 4,
-                                },
-                                repulse: {
-                                    distance: 200,
-                                    duration: 0.4,
-                                },
-                            },
-                        },
-                        particles: {
-                            color: {
-                                value: "#ffffff",
-                            },
-                            links: {
-                                color: "#ffffff",
-                                distance: 150,
-                                enable: true,
-                                opacity: 0.5,
-                                width: 1,
-                            },
-                            move: {
-                                direction: "none",
-                                enable: true,
-                                outModes: {
-                                    default: "bounce",
-                                },
-                                random: false,
-                                speed: 6,
-                                straight: false,
-                            },
-                            number: {
-                                density: {
-                                    enable: true,
-                                    area: 800,
-                                },
-                                value: 80,
-                            },
-                            opacity: {
-                                value: 0.5,
-                            },
-                            shape: {
-                                type: "circle",
-                            },
-                            size: {
-                                value: { min: 1, max: 5 },
-                            },
-                        },
-                        detectRetina: true,
-                    }}
-                />
-            )}
-        </>
+      <div 
+        className={`flex items-center justify-center h-screen ${className}`}
+        style={{ backgroundColor }}
+      >
+        <div className="text-white text-xl">Loading stars...</div>
+      </div>
     );
+  }
+
+  return (
+    <div className={`relative w-full h-screen overflow-hidden ${className}`}>
+      <Particles
+        id="tsparticles"
+        options={particlesOptions}
+        className="absolute inset-0 w-full h-full"
+      />
+    </div>
+  );
 };
 
 export default ISRODemo;

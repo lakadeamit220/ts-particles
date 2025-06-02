@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadFireworksPreset } from "@tsparticles/preset-fireworks";
 
@@ -68,7 +68,7 @@ const FireworksComponent = () => {
       />
 
       {/* Content Overlay */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4">
+      {/* <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4">
         <div className="text-center max-w-4xl">
           <h1 className="text-4xl md:text-6xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">
             Fireworks Spectacular
@@ -126,7 +126,7 @@ const FireworksComponent = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
