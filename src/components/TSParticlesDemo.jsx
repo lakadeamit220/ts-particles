@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadFull } from "tsparticles";
 
@@ -9,16 +9,16 @@ const TsParticlesDemo = () => {
 
   // Tailwind CSS main colors (500 variants)
   const tailwindColors = [
-    "#EF4444",  // red-500
-    "#3B82F6",  // blue-500
-    "#10B981",  // green-500
-    "#F59E0B",  // yellow-500
-    "#6366F1",  // indigo-500
-    "#8B5CF6",  // purple-500
-    "#EC4899",  // pink-500
-    "#F97316",  // orange-500
-    "#06B6D4",  // cyan-500
-    "#14B8A6",  // teal-500
+    "#EF4444", // red-500
+    "#3B82F6", // blue-500
+    "#10B981", // green-500
+    "#F59E0B", // yellow-500
+    "#6366F1", // indigo-500
+    "#8B5CF6", // purple-500
+    "#EC4899", // pink-500
+    "#F97316", // orange-500
+    "#06B6D4", // cyan-500
+    "#14B8A6", // teal-500
   ];
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const TsParticlesDemo = () => {
   };
 
   const handleButtonClick = () => {
-    setClickCount(prev => prev + 1);
+    setClickCount((prev) => prev + 1);
     setParticlesColor(tailwindColors[clickCount % tailwindColors.length]);
   };
 
@@ -116,47 +116,48 @@ const TsParticlesDemo = () => {
           className="absolute top-0 left-0"
         />
       )}
-      
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+
+      <div
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
                      text-center text-gray-800 z-10 w-4/5 max-w-4xl bg-white/80 p-8 
-                     rounded-lg shadow-md">
-        <h1 className="text-4xl font-bold mb-4">
-          React Particles.js Demo
-        </h1>
-        
+                     rounded-lg shadow-md"
+      >
+        <h1 className="text-4xl font-bold mb-4">React Particles.js Demo</h1>
+
         <div className="text-left mb-8">
           <p className="text-lg mb-4">
-            This component demonstrates the <strong>@tsparticles/react</strong> library with Tailwind CSS colors.
+            This component demonstrates the <strong>@tsparticles/react</strong>{" "}
+            library with Tailwind CSS colors.
           </p>
-          
+
           <ul className="mb-4 list-disc pl-6">
             <li>Particles connect with lines when close to each other</li>
             <li>Hover to repel particles with your cursor</li>
             <li>Click anywhere to push particles away</li>
             <li>The button cycles through Tailwind's main colors</li>
           </ul>
-          
+
           <p className="text-lg">
-            Current color: <span 
-              className="font-bold" 
-              style={{ color: particlesColor }}
-            >
+            Current color:{" "}
+            <span className="font-bold" style={{ color: particlesColor }}>
               {particlesColor}
             </span>
           </p>
         </div>
-        
-        <button 
+
+        <button
           onClick={handleButtonClick}
           className={`px-6 py-3 text-lg font-bold text-white rounded-lg transition-colors duration-300`}
           style={{ backgroundColor: particlesColor }}
         >
-          Click Me ({clickCount} clicks) -  Change Particle Color
+          Click Me ({clickCount} clicks) - Change Particle Color
         </button>
-        
+
         <div className="mt-8 text-sm text-gray-600">
           <p>Try interacting with the particles in the background!</p>
-          <p className="mt-2">Colors: red-500, blue-500, green-500, yellow-500, indigo-500, etc.</p>
+          <p className="mt-2">
+            Colors: red-500, blue-500, green-500, yellow-500, indigo-500, etc.
+          </p>
         </div>
       </div>
     </div>
